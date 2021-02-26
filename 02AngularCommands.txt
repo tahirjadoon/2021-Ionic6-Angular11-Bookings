@@ -56,6 +56,8 @@ Some helpful extensions for Angular when using visual studio code. Get the lates
     10. Path Intellisense Christian Kohler 1.4.2
     11. Prettier - Code formatter Esben Petersen 1.6.1
     12. TSLint egamma 1.4.40
+	13. Angular essential John Papa version 11
+	14. 
 
 ------------------------------------------
 Create the Anuglar app 
