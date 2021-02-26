@@ -41,6 +41,8 @@ Angular CLI commands
     https://www.npmjs.com/package/@angular/cli/v/11.1.2
     https://www.javatpoint.com/angular-7-all-cli-commands
     https://angular.io/guide/setup-local  
+	
+	Observables: https://academind.com/learn/javascript/understanding-rxjs/
 
 ------------------------------------------ 
     
