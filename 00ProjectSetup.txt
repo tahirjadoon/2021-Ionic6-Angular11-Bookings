@@ -1,0 +1,18 @@
+The big project has been divided into multiple small projects. 
+
+Each project has its on containing folder. 
+
+Check a project specific details inside the [ProjectName].txt file placed in the root of each project. 
+
+Installations: 
+	node: v14.15.5
+	npm: 6.14.11
+	angular: 11.2.0
+	ionic: 6.13.1
+	
+Go through 
+	01IonicBasics.txt
+	02AngularCommans.txt 
+	
+	
+ 

@@ -1,0 +1,62 @@
+Some important resources that will help with learning
+	https://ionicframework.com/getting-started
+	https://ionicframework.com/docs
+	https://www.youtube.com/watch?v=r2ga-iXS5i4
+	https://www.youtube.com/watch?v=AvbuIRg8_Jg
+	https://www.youtube.com/watch?v=qTdwUpQRptc
+	https://www.youtube.com/watch?v=whnA4Eod3xo
+	https://www.youtube.com/watch?v=9TmeV0Td3co
+
+ionic is one code base for 
+	* progressive web app
+		* be reliable: load fast and provide offline functionality
+		* fast: respond quickly to user actions
+		* engaging: feel like a native app on mobile devices
+	* iOS App
+	* Android App
+	* electron (desktop) app -- wrap a web app as desktop app 
+	
+ionic platform 
+	web components => this is what you see on the screen 
+		stencil: used by inic to build the web components.
+	capacitor: web app to native mobile app 
+	ionic cli: works with angular cli -- full build workflow 
+	
+Installing ionic 
+	Go to https://ionicframework.com/
+	then developers => installation 
+	you must have node installed to install the ionic cli. My installation is 
+		node: v14.15.5
+		npm: 6.14.11
+		angular: 11.2.0
+		ionic: 6.13.1
+	then install ionic issuing the following command
+		npm install -g @ionic/cli
+	if there are previous versions installed then uninstall thse first 
+		npm uninstall -g ionic
+		npm install -g @ionic/cli
+		
+Creating ionic project 
+	> ionic start 
+		this will ask a few questions 
+		javascript framework: angular 
+		projectName: theBasicProject 
+		starterTemplate: blank 
+		integrate app with capacitor: y
+		
+		The home component html has been changed slightly 
+		
+Run the app 
+	> ionic serve 
+		
+To start an ionic app 
+	https://ionicframework.com/docs/developing/starting 
+	ionic start myApp tabs
+	ionic serve
+	
+		
+	
+	
+ 
+	
+	
