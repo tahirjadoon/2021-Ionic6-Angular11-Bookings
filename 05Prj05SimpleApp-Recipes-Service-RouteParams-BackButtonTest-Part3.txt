@@ -1,0 +1,27 @@
+Copy prj04SimpleApp-Recipes-RoutingTest-Part2 and rename it as prj05SimpleApp-Recipes-ServiceTest-Part3
+	run command "npm install"
+	
+run "ionic serve" to make sure that the app runs fine 
+
+Create a recipes service inside recipes folder 
+	> ionic generate service recipes/recipes
+	
+Remove the recipes array from the "recipes.page.ts" and add to the "recipes.service.ts". 
+	Make it private. 
+	Write two methods to pull the recipes. 
+		getAllRecipes() ==> use ... spread operator to return the copy of the original array 
+		getRecipe(recipeId: string) ==> return the single recipe, again the copy should return using the ... spread operator 
+		
+Add the recipesService to "recipes.page.ts" and using it pull the recipes. 
+
+On the recipe-detail.page.ts we'll need to get the recipeId from the route and then pull from the service. 
+
+While the app is running, go to the following two routes and the particular recipe should load. Check the port per the serve 
+	http://localhost:8100/recipes/r1 
+	http://localhost:8100/recipes/r2 
+	
+
+On the recipe-detail provide a back button. Check the following for more details 
+	https://ionicframework.com/docs/api/back-button 
+	IMPORTANT: provide the defaultHref="/recipes" so that there is back link availble when the user lands on the sub page directly. 
+	

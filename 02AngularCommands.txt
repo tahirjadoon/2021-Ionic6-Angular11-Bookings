@@ -204,3 +204,25 @@ Projecting Content with ng-content
 				console.log(`ParagraphContent:${this.paragraph.nativeElement.textContent}`);
 			}
 ------------------------------------------------------
+Getting the parameter from the routes
+	inject via constructor 
+		private activatedRoute: ActivatedRoute
+	
+	and then use it as 
+		this.activatedRoute.paramMap.subscribe(parmMap => {
+		  if(!parmMap.has('recipeId')){
+			//redirect
+			return;
+		  }
+		  const recipeId = parmMap.get('recipeId');
+
+		  this.recipe = this.recipesService.getRecipe(recipeId);
+		});
+-------------------------------------------------------
+To create a link from the html 
+	[routerLink]="['./', recipe.id]"
+	 or 
+	[routerLink]="['/recipes', recipe.id]"
+	
+	
+	
