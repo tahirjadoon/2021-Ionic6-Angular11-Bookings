@@ -53,6 +53,58 @@ Creating ionic project
 		
 Run the app 
 	> ionic serve 
+	
+Core Building Blocks
+	UI Components
+		ion-card
+		ion-image 
+		<ion-button fill="outline" color="primary">
+		automatically loads polyfills for the older browsers
+	Themes & Styles
+		CSS & CSS Variables
+	Naviation
+		Custom or a Build in Router
+	State Manegement
+		Passing data around
+	Native Device Features
+		Camera & More [use of Capacitor]
+	Ionic CLI and Publishing 
+		From deleopment to deployment 
+		
+Where to find ionic components
+	The full list is here: https://ionicframework.com/docs/components
+	
+Categories of IONIC Components 
+	Output
+		ion-image
+		ion-badge
+		ion-loading
+		ion-label
+		ion-title
+		ion-thumbnail
+		ion-toolbar
+		ion-alert
+		ion-toast
+		ion-modal and so on
+	Layout
+		ion-grid
+		ion-row
+		ion-col
+		ion-list 
+		ion-card 
+		ion-infinite-scroll
+		ion-tabs and so on
+	Input
+		ion-button
+		ion-input
+		ion-textarea
+		ion-menu
+		ion-select
+		ion-datetime
+		ion-fab
+		ion-toggle and so on 
+	
+	
 		
 
 	
