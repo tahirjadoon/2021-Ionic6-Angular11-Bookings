@@ -54,6 +54,12 @@ Creating ionic project
 Run the app 
 	> ionic serve 
 	
+Generating pages, modules etc 
+	> ionic generate 
+		page, component, service, module, class, directive, guard, pipe, interface, enum 
+		
+		
+	
 Core Building Blocks
 	UI Components
 		ion-card

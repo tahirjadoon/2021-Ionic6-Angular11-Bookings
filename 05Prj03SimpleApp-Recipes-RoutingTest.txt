@@ -1,0 +1,75 @@
+Create a new app 
+	> ionic start 
+		this will ask a few questions 
+		javascript framework: angular 
+		projectName: prj03SimpleApp-Recipes-RoutingTest 
+		starterTemplate: blank 
+		integrate app with capacitor: y
+		
+Run the app
+	cd into new folder and then issue
+	> ionic serve
+	 your app should display now. 
+	 
+Open the app and delete the home folder. 
+
+Create a page with ionic, this is just like creating the component with angular 
+
+	> ionic generate 
+		page, component, service, module, class, directive, guard, pipe, interface, enum 
+	
+		select page and then give name recipes
+		
+	This will create the recipe page with following files 
+		1. recipes.module.ts
+		2. recipes.page.html
+		3. recipes.page.scss
+		4. recipes.page.spec.ts
+		5. recipes.page.ts
+		6. recipes-routing.module.ts
+		
+	It will also add the recipes routing module to the app-routing.module.ts
+		IMPORTANT: remove the "home" routes that we initially removed. 
+	
+	Here is how it will look now 
+		
+		import { NgModule } from '@angular/core';
+		import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+
+		const routes: Routes = [
+		  {
+			path: '',
+			redirectTo: 'recipes',
+			pathMatch: 'full'
+		  },
+		  {
+			path: 'recipes',
+			loadChildren: () => import('./recipes/recipes.module').then( m => m.RecipesPageModule)
+		  },
+		];
+
+		@NgModule({
+		  imports: [
+			RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+		  ],
+		  exports: [RouterModule]
+		})
+		export class AppRoutingModule { }
+		
+To run the app use command 
+	> ionic serve 
+	
+Create a recipe model with name recipe.model.ts inside the recipes folder. We'll create an interface here but can create a class as well. 
+	Create this manually
+	
+	export interface Recipe {
+	  id: string;
+	  title: string;
+	  imageUrl: string;
+	  ingredients: string[];
+	}
+	
+Now creating the full code and html	
+	Follow the recipe.page.ts and reipe.page.html for details. 
+		
+	
