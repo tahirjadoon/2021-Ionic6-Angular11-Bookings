@@ -24,4 +24,4 @@ While the app is running, go to the following two routes and the particular reci
 On the recipe-detail provide a back button. Check the following for more details 
 	https://ionicframework.com/docs/api/back-button 
 	IMPORTANT: provide the defaultHref="/recipes" so that there is back link availble when the user lands on the sub page directly. 
-	
+		
