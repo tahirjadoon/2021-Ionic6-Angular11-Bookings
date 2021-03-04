@@ -79,6 +79,11 @@ To install bootstarp locally
 
 Then add it to the angular.json, styles array. make sure that bootstrap is the first one.
 -----------------------------------------------------
+Buid 
+	> ng build
+
+
+------------------------------------------------------
 Create Component
 	OLD
 		>ng g c value --spec false
