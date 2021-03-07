@@ -58,7 +58,45 @@ Generating pages, modules etc
 	> ionic generate 
 		page, component, service, module, class, directive, guard, pipe, interface, enum 
 		
+Android 
+	>ionic capacitor add android
+	
+	capacitor.config.json
+		 "appId": "com.ionic.recipes",
+		 
+	>ng build
+		 
+	>ionic capacitor copy android
+	IMPORTANT: run this after every ng build
+	
+	Live reload 
+	> ionic capacitor run android
+	or 
+	> ionic capacitor run android -l [live reload]
+	or 
+	> ionic capacitor run android -l --host=YOUR_IP_ADDRESS
+	
+	This will open the app in the android studio. Let it come up, the first run will take some time 
+		a. click tools 
+		b. click AVD Manager 
+		c. select device (Add if not there)
+		d. go back to the android studio and run it (a green play button will show in the tool bar). Also select the phone from the dropdown that yu were running
+	
+IOS
+	>ionic capacitor add ios 
+	
+	capacitor.config.json
+		 "appId": "com.ionic.recipes",
+		 
+	>ng build 
+	
+	>ionic capacitor copy ios 
+	
+	>ionic capacitor run ios
+		Build and copy steps are performed by the following and opens xcode as well. IOS folder will be selected as well in xcode
 		
+	>ionic capacitor run ios -l 
+		Live reload - this wont run ng build, this will only run ng serve
 	
 Core Building Blocks
 	UI Components
