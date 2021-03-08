@@ -97,6 +97,17 @@ IOS
 		
 	>ionic capacitor run ios -l 
 		Live reload - this wont run ng build, this will only run ng serve
+		
+Debugging native apps
+	For android: chrome://inspect [in chrome browser]
+	For IOS use Safari, go to develop tab and then find the simulator yu are running and click it and then click the ip. 
+	
+LifeCycle Hooks
+	ionViewWillEnter
+	ionViewDidEnter
+	ionViewWillLeave
+	ionViewDidLeave
+		https://ionicframework.com/docs/angular/lifecycle
 	
 Core Building Blocks
 	UI Components

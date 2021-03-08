@@ -50,7 +50,7 @@
 	
 9. Running with capacitor, it will copy the www to android folder 
 	> ionic capacitor copy android
-	IMPORTANT: run this aftre every ng build 
+	IMPORTANT: run this after every ng build 
 	
 10. Live reload 
 	> ionic capacitor run android

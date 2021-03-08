@@ -1,0 +1,49 @@
+Copy prj06SimpleApp-Recipes-Deleting and rename it prj08SimpleApp-Recipes-Deleting - Debugging
+	run command "npm install"
+	
+run "ionic serve" to make sure that the app runs fine 
+
+When getting redirectig to the recipes page after deleting, the two recipes still show. 
+
+ngOnDestroy never gets called here since ionic ruter is being used. 
+
+IONIC LifeCycle Hooks
+	ionViewWillEnter
+	ionViewDidEnter
+	ionViewWillLeave
+	ionViewDidLeave
+		https://ionicframework.com/docs/angular/lifecycle
+	
+Put a console log in ngOnInit method 
+
+Then create the functions for the above ionic life cycle hooks and place the console log here as well. Run the app and check the console. 
+	ngOnInit() {
+		this.recipes = this.recipesService.getAllRecipes();
+
+		console.log("ngOnInit");
+		console.log("LOADED RECIPES");
+		console.log(this.recipes);
+	}
+
+	ionViewWillEnter(){
+		console.log("ionViewWillEnter");
+	}
+
+	ionViewDidEnter(){
+		console.log("ionViewDidEnter");
+	}
+
+	ionViewWillLeave(){
+		console.log("ionViewWillLeave");
+	}
+
+	ionViewDidLeave(){
+		console.log("ionViewDidLeave");
+	}
+	
+	Here ngOnInit, ionViewWillEnter and ionViewDidEnter console messages will display. 
+	
+	Click on the recipe and then will see the ionViewWillLeave and ionViewDidLeave messages. ngOnDestrou never got called. It is still on the stack of pages. 
+	
+	On the recipes page move the loading of the recipes to the ionViewWillEnter. Delete the recipe. Now the recipes will show the updatd list. 
+	
