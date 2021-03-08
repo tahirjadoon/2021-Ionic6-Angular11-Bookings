@@ -1,0 +1,69 @@
+View 10Prj09Bookings-Structure.pdf or 10Prj09Bookings-Structure.PNG for more details. 
+
+	Find Places							Place detail 				Offers								Offer Details
+		Tools bar with a side menu			Image						Tool Bar with a side menu 			List of bookings
+		Tabs navigation						Title						Add + new offer icon on tool bar
+		Featured place						Book place (Modal)			List of places
+		List of other polaces				
+
+																	New Offer (+) clciked on above
+																		Form		
+																		Image
+																		Location
+																		
+																	Bookings (tool bar side menu)
+																		List og bookings 
+																	
+	Authentication 
+	
+
+>ionic start (to start the project or copy the base project and change the name etc)
+	Javascript Framework: Angular
+	ProjectName: prj09Bookings-Structure
+	Starter Template: Blank
+	Integrate Capacitor: y
+	Create free ionic account: n 
+	
+Move into the new folder 
+
+Open index.html and change the title to Bookings
+
+Delete the default "home" folder
+
+Pages to create. The pages are being created as we'll view these in the url. 
+	
+	1. auth 
+		>ionic generate page auth
+			open app-routing.module.ts and change the route to folowing 
+			
+			{path: 'auth', redirectTo: 'auth', pathMatch: 'full'},
+			{
+				path: 'auth',
+				loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+			},
+
+	2. places 
+		>ionic generate page places
+	
+	3. places > discover 
+		>ionic generate page places/discover
+		
+	4. places > offers 
+		>ionic generate page places/offers
+		
+	5. places > offers > new-offer 
+		>ionic generate page places/offers/new-offer
+		
+	6. places > offers > edit-offer 
+		>ionic generate page places/offers/edit-offer
+		
+	7. places > offers > offer-bookings
+		>ionic generate page places/offers/offer-bookings
+		
+	8. places > discover > place-detail 
+		>ionic generate page places/discover/place-detail
+		
+	9. bookings [my bookings]
+		>ionic generate page bookings
+		
+Run the app "ionic serve" to make sure that the app compiles and you see the auth place holder page. 
