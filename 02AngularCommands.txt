@@ -228,6 +228,8 @@ To create a link from the html
 	[routerLink]="['./', recipe.id]"
 	 or 
 	[routerLink]="['/recipes', recipe.id]"
-	
-	
+-------------------------------------------------------
+Navigating from the ts page 
+	this.router.navigateByUrl('/places/tabs/discover');
+	this.router.navigate(['/places/tabs/discover']);
 	

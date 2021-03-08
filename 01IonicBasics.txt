@@ -58,6 +58,25 @@ Generating pages, modules etc
 	> ionic generate 
 		page, component, service, module, class, directive, guard, pipe, interface, enum 
 		
+RouterDirection
+	routerDirection="Forward"
+		"back" | "forward" | "root"
+		default is forward
+		
+Navigating backward 
+	TS
+		constructor(private router: Router, private navCtrl: NavController) { }
+		
+		this.router.navigateByUrl('/places/tabs/discover'); //displays forward animation
+		this.navCtrl.navigateBack('/places/tabs/discover'); //displays back animation
+		this.navCtrl.pop(); //pop the last page of the stack, unreliable.
+		
+	HTML
+		<ion-buttons slot="start">
+		  <ion-back-button defaultHref="/places/tabs/discover"></ion-back-button>
+		</ion-buttons>
+		
+		
 Android 
 	>ionic capacitor add android
 	
