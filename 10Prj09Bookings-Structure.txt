@@ -64,7 +64,7 @@ Run the app "ionic serve" to make sure that the app compiles and you see the pla
 
 We'll be lazy loading the app.  
 
-At the top level we'll have three routes 
+At the top level we'll have three routes. IMPORTANT the routes got updated with project "prj10Bookings-Structure-Tabs" due to incorporation of tabs and dynamic pages 
 	1. in the "app-routing-module.ts" file 
 		The default route will be "places" 
 	
@@ -123,12 +123,12 @@ At the top level we'll have three routes
 			component: DiscoverPage
 		  },
 		  {
-			path: 'place-detail',
+			path: 'place-detail', 
 			loadChildren: () => import('./place-detail/place-detail.module').then( m => m.PlaceDetailPageModule)
 		  }
 		];
 		
-	5. Pleaces has 3 children, "places-routing.module.ts" will look like 
+	5. Offers has 3 children, "offers-routing.module.ts" will look like 
 		const routes: Routes = [
 		  {
 			path: '',
@@ -139,11 +139,11 @@ At the top level we'll have three routes
 			loadChildren: () => import('./new-offer/new-offer.module').then( m => m.NewOfferPageModule)
 		  },
 		  {
-			path: 'edit-offer',
+			path: 'edit-offer', 
 			loadChildren: () => import('./edit-offer/edit-offer.module').then( m => m.EditOfferPageModule)
 		  },
 		  {
-			path: 'offer-bookings',
+			path: 'offer-bookings', 
 			loadChildren: () => import('./offer-bookings/offer-bookings.module').then( m => m.OfferBookingsPageModule)
 		  }
 		];
