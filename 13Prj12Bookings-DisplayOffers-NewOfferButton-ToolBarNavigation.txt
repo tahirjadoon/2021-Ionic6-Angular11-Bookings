@@ -21,6 +21,10 @@ Add the + button on the offers tab to take to the new-offer page.
       </ion-button>
     </ion-buttons>
 	
-On the new page take the user back to the offers page. 
+On the new-offer page take the user back to the offers page. 
+
+Edit-offer page pull the place and also take the user back 
+
+Place-Detail page pull the place 
 
 
