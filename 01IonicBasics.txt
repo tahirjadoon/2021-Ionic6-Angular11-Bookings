@@ -63,6 +63,8 @@ RouterDirection
 		"back" | "forward" | "root"
 		default is forward
 		
+		<ion-button fill="clear" color="primary" routerDirection="forward" [routerLink]="['/', 'places', 'tabs', 'discover', 'place', loadedPlaces[0].id, 'detail']">
+		
 Navigating backward 
 	TS
 		constructor(private router: Router, private navCtrl: NavController) { }
@@ -76,6 +78,8 @@ Navigating backward
 		  <ion-back-button defaultHref="/places/tabs/discover"></ion-back-button>
 		</ion-buttons>
 		
+AlertController
+	https://ionicframework.com/docs/api/alert
 		
 Android 
 	>ionic capacitor add android

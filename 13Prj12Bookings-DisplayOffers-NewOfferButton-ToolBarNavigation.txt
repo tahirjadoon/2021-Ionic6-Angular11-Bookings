@@ -1,0 +1,26 @@
+Copy prj11Bookings-Data-Services-Forward-Back-Navigation and rename it as prj12Bookings-DisplayOffers-NewOfferButton-ToolBarNavigation
+	run command "npm install"
+	
+run "ionic serve" to make sure that the app runs fine 
+
+Display the places on the offers tab (later would be changed) just like the discover tab. On the item click take the user to the offer-bookings page. 
+	On the offer-bookings page add the back button. 
+	On the offer booking page add a button to go to the edit page. 
+		Get the placeId using the activatedRoute by subscribing to the paramMap. Redirect to offers page when no place is found per the placeId. Can use router or NavController
+			In the Places.Service.ts add a new function to get the place by an id. 
+		The edit button will look like. The reason ? is used in case the place not fetched on time. 
+			<ion-content class="ion-padding">
+			  <ion-button class="ion-margin" color="primary" [routerLink]="['/','places', 'tabs', 'offers', 'edit', place?.id, 'offer']">Edit {{ place?.title }}</ion-button>
+			</ion-content>
+		
+
+Add the + button on the offers tab to take to the new-offer page. 
+	<ion-buttons slot="primary">
+      <ion-button [routerLink]="['/places/tabs/offers/new']">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+	
+On the new page take the user back to the offers page. 
+
+
