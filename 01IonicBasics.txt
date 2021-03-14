@@ -57,7 +57,40 @@ Run the app
 Generating pages, modules etc 
 	> ionic generate 
 		page, component, service, module, class, directive, guard, pipe, interface, enum 
-		
+	
+Where to find ionic components
+	The full list is here: https://ionicframework.com/docs/components
+	
+Categories of IONIC Components 
+	Output
+		ion-image
+		ion-badge
+		ion-loading
+		ion-label
+		ion-title
+		ion-thumbnail
+		ion-toolbar
+		ion-alert
+		ion-toast
+		ion-modal and so on
+	Layout
+		ion-grid
+		ion-row
+		ion-col
+		ion-list 
+		ion-card 
+		ion-infinite-scroll
+		ion-tabs and so on
+	Input
+		ion-button
+		ion-input
+		ion-textarea
+		ion-menu
+		ion-select
+		ion-datetime
+		ion-fab
+		ion-toggle and so on 
+	
 RouterDirection
 	routerDirection="Forward"
 		"back" | "forward" | "root"
@@ -80,6 +113,8 @@ Navigating backward
 		
 AlertController
 	https://ionicframework.com/docs/api/alert
+	
+MenuController
 		
 Android 
 	>ionic capacitor add android
@@ -149,38 +184,7 @@ Core Building Blocks
 	Ionic CLI and Publishing 
 		From deleopment to deployment 
 		
-Where to find ionic components
-	The full list is here: https://ionicframework.com/docs/components
-	
-Categories of IONIC Components 
-	Output
-		ion-image
-		ion-badge
-		ion-loading
-		ion-label
-		ion-title
-		ion-thumbnail
-		ion-toolbar
-		ion-alert
-		ion-toast
-		ion-modal and so on
-	Layout
-		ion-grid
-		ion-row
-		ion-col
-		ion-list 
-		ion-card 
-		ion-infinite-scroll
-		ion-tabs and so on
-	Input
-		ion-button
-		ion-input
-		ion-textarea
-		ion-menu
-		ion-select
-		ion-datetime
-		ion-fab
-		ion-toggle and so on 
+
 	
 	
 		
