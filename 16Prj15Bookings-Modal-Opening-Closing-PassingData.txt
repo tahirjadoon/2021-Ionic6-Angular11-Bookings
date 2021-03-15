@@ -1,0 +1,17 @@
+Copy prj14Bookings-Auth-Basics and rename it as prj15Bookings-Modal-Opening-Closing-PassingData
+	run command "npm install"
+	
+run "ionic serve" to make sure that the app runs fine 
+
+Create a new component for the model which will get opened from bookings 
+	IMPORTANT: book button is in places > discover > place-detail 
+	> ionic generate component bookings/create-booking 
+	
+	The registration for the component would be in the place-detail.module.ts where the modal would be opened.  
+		IMPORTANT: add to entryComponents as well since this will not get used from route or with the selector app-create-booking 
+		declarations: [PlaceDetailPage, CreateBookingComponent],
+		entryComponents: [CreateBookingComponent] 
+		
+	Go to place-detail and then click the button. It will slide up the modal
+		
+
