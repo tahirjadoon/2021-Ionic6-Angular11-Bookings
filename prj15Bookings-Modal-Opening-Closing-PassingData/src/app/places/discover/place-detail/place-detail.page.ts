@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalController, NavController } from '@ionic/angular';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { CreateBookingComponent } from 'src/app/bookings/create-booking/create-booking.component';
 
 import { Place } from 'src/app/Utilities/Models/place.model';
@@ -14,7 +14,12 @@ import { PlacesService } from 'src/app/Utilities/Services/places.service';
 export class PlaceDetailPage implements OnInit {
   place: Place;
 
-  constructor(private router: Router, private navCtrl: NavController, private placesService: PlacesService, private activatedRoute: ActivatedRoute, private modalCntrl: ModalController) { }
+  constructor(private router: Router,
+      private navCtrl: NavController,
+      private placesService: PlacesService,
+      private activatedRoute: ActivatedRoute,
+      private modalCntrl: ModalController,
+      private alertCntrl: AlertController) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
@@ -34,20 +39,36 @@ export class PlaceDetailPage implements OnInit {
     });
   }
 
-  onBookPlace(){
+  async onBookPlace(){
     //this.router.navigateByUrl('/places/tabs/discover'); //displays forward animation
     //this.navCtrl.navigateBack('/places/tabs/discover'); //displays back animation
     //this.navCtrl.pop(); //pop the last page of the stack, unreliable.
     //this.navigateToBookings();
 
-    //open modal
-    this.modalCntrl.create({
+    //open modal ==> pass the date into it using the componentProps
+    let modal = this.modalCntrl.create({
                     component: CreateBookingComponent,
-                    keyboardClose: true
-                  })
-                  .then(modalEelem => {
-                    modalEelem.present();
+                    componentProps: { selectedPlace: this.place }, //gets passed in as the INPUT property
+                    keyboardClose: true,
+                    swipeToClose: true
                   });
+    await (await modal).present();
+    const { data, role } = await (await modal).onWillDismiss(); //onDidDismiss()
+    if(role === "confirm"){
+      this.presentAlert(`Message passed back<br/><br/>${data.message}<br/><br/>Role '${role}' passed back`);
+    }
+    else{
+      this.presentAlert(`Cancel clicked!<br/><br/>Role '${role}' passed back`);
+    }
+  }
+
+  async presentAlert(message: string){
+    const alert = await this.alertCntrl.create({
+      header: 'Alert',
+      message: message,
+      buttons: ['Ok']
+    });
+    await alert.present();
   }
 
   navigateToBookings(){
