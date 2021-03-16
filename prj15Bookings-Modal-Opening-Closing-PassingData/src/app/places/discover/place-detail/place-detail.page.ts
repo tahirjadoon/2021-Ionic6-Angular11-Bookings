@@ -46,14 +46,14 @@ export class PlaceDetailPage implements OnInit {
     //this.navigateToBookings();
 
     //open modal ==> pass the date into it using the componentProps
-    let modal = this.modalCntrl.create({
+    let modal = await this.modalCntrl.create({
                     component: CreateBookingComponent,
                     componentProps: { selectedPlace: this.place }, //gets passed in as the INPUT property
                     keyboardClose: true,
                     swipeToClose: true
                   });
-    await (await modal).present();
-    const { data, role } = await (await modal).onWillDismiss(); //onDidDismiss()
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss(); //onDidDismiss()
     if(role === "confirm"){
       this.presentAlert(`Message passed back<br/><br/>${data.message}<br/><br/>Role '${role}' passed back`);
     }
