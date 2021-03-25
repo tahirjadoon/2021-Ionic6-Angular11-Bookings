@@ -120,7 +120,7 @@ AlertController
 	https://ionicframework.com/docs/api/alert
 ion-virtual-scroll 
 	https://ionicframework.com/docs/api/virtual-scroll
-	check 19Prj18-Bookings-virtual-scrolling.txt for more details. 
+	check 00SupportingDocs/prj18-Bookings-virtual-scrolling.txt for more details. 
 ion-segment
 ion-seqment-button 
 
