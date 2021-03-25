@@ -58,9 +58,18 @@
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
 
-        <ion-list>
+        <!--since using scroll, removed the for loop from the ion-item moved it to the ion-virtual-scroll-->
+        <!--it takes the items property -->
+        <!--get the approxItemHeight using the dev tools and picking the height of an ion-item. The default is 40px-->
+        <ion-virtual-scroll [items]="listedLoadedPlaces" approxItemHeight="60px">
+
+        <!--<ion-list>-->
+
           <!--Excluding the featured item above-->
-          <ion-item *ngFor="let place of loadedPlaces.slice(1); let i = index" [routerLink]="['/', 'places', 'tabs', 'discover', 'place', place.id, 'detail']" detail>
+          <!--<ion-item *ngFor="let place of loadedPlaces.slice(1); let i = index" [routerLink]="['/', 'places', 'tabs', 'discover', 'place', place.id, 'detail']" detail>-->
+          <ion-item [routerLink]="['/', 'places', 'tabs', 'discover', 'place', place.id, 'detail']"
+            detail
+            *virtualItem="let place">
             <ion-thumbnail slot="start">
               <ion-img [src]="place.imageUrl"></ion-img>
             </ion-thumbnail>
@@ -69,8 +78,10 @@
               <p>{{ place.description }}</p>
             </ion-label>
           </ion-item>
-        </ion-list>
 
+        <!--</ion-list>-->
+
+      </ion-virtual-scroll>
       </ion-col>
     </ion-row>
 

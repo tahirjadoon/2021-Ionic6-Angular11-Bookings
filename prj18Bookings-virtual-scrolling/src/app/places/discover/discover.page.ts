@@ -12,11 +12,15 @@ import { PlacesService } from 'src/app/Utilities/Services/places.service';
 })
 export class DiscoverPage implements OnInit {
   loadedPlaces: Place[];
+  listedLoadedPlaces: Place[]; //for virtual scroll
 
   constructor(private placesService: PlacesService, private menuCntrl: MenuController) { }
 
   ngOnInit() {
     this.loadedPlaces = this.placesService.places; //getter property
+
+    //for the virtual scroll
+    this.listedLoadedPlaces = this.loadedPlaces.slice(1);
   }
 
   onMenuDrawerOpen(){
