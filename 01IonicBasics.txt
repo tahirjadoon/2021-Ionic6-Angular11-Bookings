@@ -184,6 +184,8 @@ Core Building Blocks
 		automatically loads polyfills for the older browsers
 	Themes & Styles
 		CSS & CSS Variables
+		https://ionicframework.com/docs/theming/basics 
+		https://ionicframework.com/docs/theming/color-generator
 	Naviation
 		Custom or a Build in Router
 	State Manegement
