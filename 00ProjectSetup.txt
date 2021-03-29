@@ -2,7 +2,7 @@ The big project has been divided into multiple small projects.
 
 Each project has its on containing folder. 
 
-Project specific details are in folder "zzzSupportingDocs" in the root. Each project has it's own document. 
+Project specific details are in the folder "00ProjectDocs" in the root. Each project has it's own document. 
 
 Installations: 
 	node: v14.15.5
