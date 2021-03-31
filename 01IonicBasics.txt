@@ -83,6 +83,7 @@ Categories of IONIC Components
 		ion-tabs and so on
 	Input
 		ion-button
+			explore expand, fill attributes
 		ion-input
 		ion-textarea
 		ion-menu

@@ -1,0 +1,30 @@
+Copy "prj20Bookings-Theming" and rename it as "prj21Bookings-Forms-Auth"
+	run command "npm install"
+	
+run "ionic serve" to make sure that the app runs fine 
+
+When validation fails then the label color should change. Do this at the global level in global.scss. 
+	.ion-invalid.ion-touched ion-label{
+	  color: var(--ion-color-danger);
+	}
+	
+	ion-label.site-validation-error {
+	  color: var(--ion-color-danger)!important;
+	}
+
+Template Driven Form:
+	
+	Auth Page 
+		Make sure that the auth.module.ts has the "FormsModule" in imports array. 
+		Basic form struture put in place 
+		Take a look at both auth.page.html and auth.page.ts for details. 
+
+Reactive Form:
+
+	New Offer (places/offers/new-offer)
+		IMPORTANT: check use of autocomplete and autocorrect
+		Go to new-offer.module.ts, remove FormsModule and add ReactiveFormsModule to the omports array. 
+		Take a look at both new-offer.page.ts and new-offer.page.html
+			To bind the form to html 
+				<form [formGroup]="form">
+	
