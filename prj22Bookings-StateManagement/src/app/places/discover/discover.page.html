@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!--menu drawer-->
+    <ion-buttons slot="start">
+      <ion-menu-button menu="menu1"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Discover Places</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!--segmented buttons-->
+  <ion-segment value="all" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="all">All Places</ion-segment-button>
+    <ion-segment-button value="bookable">Bookable Places</ion-segment-button>
+  </ion-segment>
+
+  <ion-grid *ngIf="!relevantPlaces || relevantPlaces.length <= 0">
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+        <p>No bookable places right now!</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="relevantPlaces.length > 0">
+
+    <!--open the side drawer manually -->
+    <ion-row>
+      <ion-button fill="clear" (click)="onMenuDrawerOpen()">
+        Menu
+        <ion-icon slot="start" name="apps-outline"></ion-icon>
+        <ion-icon slot="end" name="checkmark-done-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-row>
+
+    <!--Featured place-->
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+
+        <ion-card>
+
+          <ion-card-header>
+            <ion-card-title>{{ relevantPlaces[0]?.title }}</ion-card-title>
+            <ion-card-subtitle>{{ relevantPlaces[0]?.price | currency }} / Night</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-img [src]="relevantPlaces[0]?.imageUrl"></ion-img>
+
+          <ion-card-content>
+            <div>{{ relevantPlaces[0]?.description}}</div>
+          </ion-card-content>
+
+          <div class="ion-text-right">
+            <!--fill Clear mean no background -->
+            <!--<ion-button fill="clear" color="primary" routerDirection="forward" [routerLink]="['/', 'places', 'tabs', 'discover', 'place', loadedPlaces[0]?.id, 'detail']">-->
+            <ion-button fill="clear" color="primary" routerDirection="forward" [routerLink]="[getDiscoverPageDetailLink(relevantPlaces[0]?.id)]">
+              More
+              <ion-icon slot="start" name="star"></ion-icon>
+              <ion-icon slot="start" name="checkbox-outline" *ngIf="relevantPlaces[0]?.userId !== userId"></ion-icon>
+              <ion-icon slot="start" name="remove-circle-outline" *ngIf="relevantPlaces[0]?.userId === userId"></ion-icon>
+              <ion-icon slot="end" name="arrow-forward-circle-outline" color="primary"></ion-icon>
+            </ion-button>
+          </div>
+
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+
+    <!--Other places-->
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+
+        <!--since using scroll, removed the for loop from the ion-item moved it to the ion-virtual-scroll-->
+        <!--it takes the items property -->
+        <!--get the approxItemHeight using the dev tools and picking the height of an ion-item. The default is 40px-->
+        <ion-virtual-scroll [items]="listedLoadedPlaces" approxItemHeight="60px">
+
+        <!--<ion-list>-->
+
+          <!--Excluding the featured item above-->
+          <!--<ion-item *ngFor="let place of loadedPlaces.slice(1); let i = index" [routerLink]="['/', 'places', 'tabs', 'discover', 'place', place.id, 'detail']" detail>-->
+          <!--<ion-item [routerLink]="['/', 'places', 'tabs', 'discover', 'place', place?.id, 'detail']"-->
+          <ion-item [routerLink]="[getDiscoverPageDetailLink(place?.id)]"
+            detail
+            *virtualItem="let place">
+            <ion-thumbnail slot="start">
+              <ion-img [src]="place?.imageUrl"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>
+                <ion-icon slot="start" color="primary" name="checkbox-outline" *ngIf="place?.userId !== userId"></ion-icon>
+                <ion-icon slot="start" color="primary" name="remove-circle-outline" *ngIf="place?.userId === userId"></ion-icon>
+                {{ place?.title}}</h2>
+              <p>
+                {{ place?.description }}
+              </p>
+            </ion-label>
+          </ion-item>
+
+        <!--</ion-list>-->
+
+      </ion-virtual-scroll>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>

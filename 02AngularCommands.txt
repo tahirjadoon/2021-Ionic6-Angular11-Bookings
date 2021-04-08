@@ -232,4 +232,8 @@ To create a link from the html
 Navigating from the ts page 
 	this.router.navigateByUrl('/places/tabs/discover');
 	this.router.navigate(['/places/tabs/discover']);
+-------------------------------------------------------
+RxJS
+	https://www.youtube.com/watch?v=Tux1nhBPl_w&list=PL55RiY5tL51pHpagYcrN9ubNLVXF8rGVi&index=3
+	
 	

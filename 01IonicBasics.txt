@@ -113,12 +113,165 @@ Navigating backward
 		</ion-buttons>
 	
 ActionSheetController
+	one way 
+		async presentActionSheet(){
+			const actionSheet = await this.actionSheetCntrl.create({
+			  header: 'Choose an Action',
+			  buttons: [
+				{
+				  text: 'Select Date',
+				  handler: () => {
+					this.presentModal('select');
+				  }
+				},
+				{
+				  text: 'Random Date',
+				  handler: () => {
+					this.presentModal('random');
+				  }
+				},
+				{
+				  text: "Cancel",
+				  icon: "close",
+				  role: 'cancel', //dont use destructive, it is for delete
+				  handler: () => {
+					console.log('cancel clicked');
+				  }
+				}
+			  ]
+			});
+			await actionSheet.present();
+		  }
+	alternate way 
+		onBookPlace() {
+			this.actionSheetCtrl
+			  .create({
+				header: 'Choose an Action',
+				buttons: [
+				  {
+					text: 'Select Date',
+					handler: () => {
+					  this.openBookingModal('select');
+					}
+				  },
+				  {
+					text: 'Random Date',
+					handler: () => {
+					  this.openBookingModal('random');
+					}
+				  },
+				  {
+					text: 'Cancel',
+					role: 'cancel'
+				  }
+				]
+			  })
+			  .then(actionSheetEl => {
+				actionSheetEl.present();
+			  });
+		  }
+  
 NavController	
 MenuController
 ModalController
+	one way 
+		async presentModal(mode: 'select' | 'random'){ //mode must be passed in as select or random
+			console.log("mode:" + mode);
+
+			//open modal ==> pass the date into it using the componentProps
+			let modal = await this.modalCntrl.create({
+			  component: CreateBookingComponent,
+			  componentProps: { selectedPlace: this.place, selectedMode: mode }, //gets passed in as the INPUT property
+			  keyboardClose: true,
+			  swipeToClose: true
+			});
+			await modal.present();
+			const { data, role } = await modal.onWillDismiss(); //onDidDismiss()
+			if(role === "confirm"){
+			  console.log(data.message);
+			  this.presentAlert(`Message passed back<br/><br/>${data.message.firstName}<br/><br/>Role '${role}' passed back`);
+			}
+			else{
+			  this.presentAlert(`Cancel clicked!<br/><br/>Role '${role}' passed back`);
+			}
+		  }
+		  
+	alternate way 
+		openBookingModal(mode: 'select' | 'random') {
+			console.log(mode);
+			this.modalCtrl
+			  .create({
+				component: CreateBookingComponent,
+				componentProps: { selectedPlace: this.place, selectedMode: mode }
+			  })
+			  .then(modalEl => {
+				modalEl.present();
+				return modalEl.onDidDismiss();
+			  })
+			  .then(resultData => {
+				console.log(resultData.data, resultData.role);
+				if (resultData.role === 'confirm') {
+				  console.log('BOOKED!');
+				}
+			  });
+		  }
+  
+  
 LoadingController
+	one way 
+		async doLogin(email: string, password: string){
+			this.isLoading = true;
+
+			//only in case of overlay spinner
+			const loading = await this.loadingCtrl.create({ keyboardClose: true, message: 'Logging In...' });
+			await loading.present();
+
+			setTimeout(() => {
+			  this.isLoading = false;
+			  loading.dismiss();
+			  this.redirect();
+
+			  this.authService.logIn();
+			  console.log(this.returnUrl);
+			}, 5000);
+		  }
+	alternate way 
+		this.loadingCtrl.create({
+		  keyboardClose: false,
+		  message: 'Creaeting Place...'
+		}).then(loadingEl => {
+		  loadingEl.present();
+
+		  //do something 
+		  //dismiss the spinner
+		  loadingEl.dismiss();
+		});
 AlertController
 	https://ionicframework.com/docs/api/alert
+	
+	one way 
+		async presentAlert(message: string){
+			const alert = await this.alertCntrl.create({
+			  header: 'Alert',
+			  message: message,
+			  buttons: ['Ok']
+			});
+			await alert.present();
+		  }
+		  
+	alertnate way 
+		https://www.freakyjolly.com/ionic-alert-this-alertcontroller-create/#.YG1Fl-hKiUk
+		this.alertController.create({
+		  header: 'Alert',
+		  subHeader: 'Subtitle for alert',
+		  message: 'This is an alert message.',
+		  buttons: ['OK']
+		}).then(res => {
+
+		  res.present();
+
+		});
+  
 ion-virtual-scroll 
 	https://ionicframework.com/docs/api/virtual-scroll
 	check 00SupportingDocs/prj18-Bookings-virtual-scrolling.txt for more details. 
