@@ -1,0 +1,58 @@
+Create a google account
+
+Got to https://firebase.google,com and login with the google account
+
+This will land you on the console. 
+
+Create a new Project with any name. It is 3 step process, all default selected as is. 
+
+Once done, project overview will display. The new project created shuld be selected. 
+
+Towards the top left there is Project Overview, keep note of Project Name, Project ID, Project Number, Web API Key  
+	
+Under the overview, there is Build or Develop tab, click on it to revel the options. 
+	Click on the RealTime Datebase or Datebase link
+		Under the option RealTime Database (not Cloud Firestore), click Create Database 
+			1. select realtime database location
+			2. under security select "Start in test mode" and click enable. Will put in tighter security later. 
+		This will land you on the RealTime Databse config. Keep note of the URL 
+			
+			
+In the begining this will open so do not specufy any rules. Also the bookings would be search able on userId so specify that
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "bookings": {
+      ".indexOn": ["userId"]
+    }
+  }
+}	
+		
+Utilities/Models/firebase.model.ts 
+	At the top there is a property for the appStoreMode, It has three possible values so setup accordingly. 
+		Database,
+		DatabaseAndLocal,
+		Local
+	
+	This model has the properties to hold the Firebase params. 
+		Fill these from row 25 to 29
+		Update these per your own setup 
+		
+		private _fbBaseUrl: string = ""; [update this]
+	    private _fbProjectName: string = ""; [update this]
+	    private _fbProjectId: string = ""; [update this]
+	    private _fbProjectNumber: string = ""; [update this]
+	    private _fbWebApiKey: string = "";
+		
+	End point names start from row 32
+		
+	When creating the instance of this class do specify the httpAction for which this is needed. finalUrl utilizes it. 
+
+
+Enums 
+	two enums in a single file 
+		Utilities/Enums/zHttpAction.enum.ts 
+			* zHttpAction
+			* zDatabaseMode
+		
