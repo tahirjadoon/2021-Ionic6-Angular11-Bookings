@@ -1,0 +1,44 @@
+Copy "prj20Bookings-Theming" and rename it as "prj21Bookings-Forms-Auth"
+	run command "npm install"
+	
+run "ionic serve" to make sure that the app runs fine 
+
+When validation fails then the label color should change. Do this at the global level in global.scss. 
+	.ion-invalid.ion-touched ion-label{
+	  color: var(--ion-color-danger);
+	}
+	
+	ion-label.site-validation-error {
+	  color: var(--ion-color-danger)!important;
+	}
+
+Template Driven Form:
+	
+	Auth Page 
+		Make sure that the auth.module.ts has the "FormsModule" in imports array. 
+		Basic form struture put in place 
+		Take a look at both auth.page.html and auth.page.ts for details. 
+			Using local reference
+				<form #f="ngForm" (ngSubmit)="onSubmit(f)"
+				
+	Create Booking (bookings/create-booking)
+		added from and to date to Place model so need to fix all the places this modle is being used.
+			double check places service
+		<form #f="ngForm" (ngSubmit)="onSubmit(f)"
+		Also see use of ViewChild
+		Passing the data captured back to "place-detail.page.ts" that opens this pop up. 
+
+Reactive Form:
+
+	New Offer (places/offers/new-offer)
+		IMPORTANT: check use of autocomplete and autocorrect
+		Go to new-offer.module.ts, remove FormsModule and add ReactiveFormsModule to the omports array. 
+		Take a look at both new-offer.page.ts and new-offer.page.html
+			To bind the form to html 
+				<form [formGroup]="form">
+	
+	Edit Offer (places/offers/edit-offer)
+		IMPORTANT: check use of autocomplete and autocorrect
+		Go to edit-offer.module.ts, remove FormsModule and add ReactiveFormsModule to the omports array. 
+		To bind the form to html 
+			<form [formGroup]="form">

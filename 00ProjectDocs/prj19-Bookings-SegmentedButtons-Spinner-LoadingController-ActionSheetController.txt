@@ -1,0 +1,33 @@
+Copy prj18Bookings-virtual-scrolling and rename it as prj19Bookings-SegmentedButtons
+	run command "npm install"
+	
+run "ionic serve" to make sure that the app runs fine 
+
+
+Segmentation
+	The change is in the places/discover/discover.page.html 
+
+	Two modes here 
+		1. all the places 
+		2. actual bookable places not offered by us
+	
+	Not using tabs, tabs are for navigation. 
+
+	We'll do this by using ion-segment components. 
+		https://ionicframework.com/docs/api/segment
+		https://ionicframework.com/docs/api/segment-button
+		
+Spinner 
+	Auth.page.ts and auth.page.html
+	Will fake the login call by displaying a spinner
+	This is simple non overlay spinner 
+	
+LoadingController 
+	Auth.page.ts and auth.page.html
+	Will fake the login call by displaying a spinner
+	This is overlay spinner 
+	
+ActionSheetController 
+	https://ionicframework.com/docs/api/action-sheet
+	check place-detail where we have the modal. It is now being called via action sheet buttons click
+	

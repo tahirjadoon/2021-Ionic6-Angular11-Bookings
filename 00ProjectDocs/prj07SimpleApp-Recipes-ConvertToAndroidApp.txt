@@ -1,0 +1,73 @@
+
+1. Download and install android studio 
+	https://developer.android.com/studio 
+	Make sure to install the 
+	* Android SDK Tools 26.0.1 or greater 
+	* Android SDK Platforms for API 21 or greater
+	
+2. Take a look at capacitor docs for Android and IOS documentation. 
+	https://capacitor.ionicframework.com/docs/android 
+	
+3. Open Android Studio 
+
+4. Configure dropdown 
+	a. SDK Manager 
+		1. SDK Platform Tab - select following
+			i. Android 11 or what ever latest version is installed 
+		2. SDK Tools - select following 
+			i. Andrid SDK Buuld Tools 31
+			ii. Android Emulator
+			iii. Android SDK Platform-Tools
+			iv. Android SDK Tools (Obsolete)
+			v. Google Play Services 
+			vi. intel x86 Emulator Accelerator (HAXM installer)
+			
+5. Once all are installed, follow the instructions
+	https://ionicframework.com/docs/developing/android
+	https://capacitor.ionicframework.com/docs/android 
+	
+6. >ng build
+	it will add a www folder to the root of the application
+
+7. Generate native project 
+	ionic capacitor add android
+	it will add a android folder to the root of the application 
+	
+8. Add the app id by opening the "capacitor.config.json" in the root 
+	{
+	  "appId": "com.ionic.recipes",
+	  "appName": "SimpleApp-Recipes",
+	  "bundledWebRuntime": false,
+	  "npmClient": "npm",
+	  "webDir": "www",
+	  "plugins": {
+		"SplashScreen": {
+		  "launchShowDuration": 0
+		}
+	  },
+	  "cordova": {}
+	}
+	
+9. Running with capacitor, it will copy the www to android folder 
+	> ionic capacitor copy android
+	IMPORTANT: run this after every ng build 
+	
+10. Live reload 
+	> ionic capacitor run android
+	or 
+	> ionic capacitor run android -l [live reload]
+	or 
+	> ionic capacitor run android -l --host=YOUR_IP_ADDRESS
+	
+11. This will open the app in the android studio. Let it come up, the first run will take some time 
+	a. click tools 
+	b. click AVD Manager 
+	c. select device (Add if not there)
+	d. go back to the android studio and run it (a green play button will show in the tool bar). Also select the phone from the dropdown that yu were running
+	
+12. Running the App on a Real Android Device
+	You can easily run the app on a real Android device, too.
+
+	Simply connect your Android phone to your machine via USB and enable the "Developer Options" as described here: https://developer.android.com/studio/debug/dev-options
+
+	Once enabled, check "USB Debugging" in the "Developer Options" and you're good to go and should be able to run the app on your device by selecting it inside of Android Studio.

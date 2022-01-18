@@ -1,0 +1,64 @@
+Copy prj17Bookings-bookings-Swipeable-ListItems and rename it as prj18Bookings-virtual-scrolling
+	run command "npm install"
+	
+run "ionic serve" to make sure that the app runs fine 
+
+See following for more details: 
+	https://ionicframework.com/docs/api/virtual-scroll
+
+Take a look at the places/discover/discover.page.html for more details. 
+
+Under other places, replaces ion-list with ion-virtual-scroll. 
+
+Old content is commented and new is now showing in its place. 
+
+Using the def tool check the height of one for the ion-item. 
+	In this case it is roughly 60px high. 
+	By default it assumes a height of 40 px
+
+
+	<!--Other places-->
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+
+        <!--since using scroll, removed the for loop from the ion-item moved it to the ion-virtual-scroll-->
+        <!--it takes the items property -->
+        <!--get the approxItemHeight using the dev tools and picking the height of an ion-item. The default is 40px-->
+        <ion-virtual-scroll [items]="listedLoadedPlaces" approxItemHeight="60px">
+
+        <!--<ion-list>-->
+
+          <!--Excluding the featured item above-->
+          <!--<ion-item *ngFor="let place of loadedPlaces.slice(1); let i = index" [routerLink]="['/', 'places', 'tabs', 'discover', 'place', place.id, 'detail']" detail>-->
+          <ion-item [routerLink]="['/', 'places', 'tabs', 'discover', 'place', place.id, 'detail']"
+            detail
+            *virtualItem="let place">
+            <ion-thumbnail slot="start">
+              <ion-img [src]="place.imageUrl"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{ place.title}}</h2>
+              <p>{{ place.description }}</p>
+            </ion-label>
+          </ion-item>
+
+        <!--</ion-list>-->
+
+      </ion-virtual-scroll>
+      </ion-col>
+    </ion-row>
+
+and then in the discover.page.ts 
+	loadedPlaces: Place[];
+	listedLoadedPlaces: Place[]; //for virtual scroll
+	
+	ngOnInit() {
+		this.loadedPlaces = this.placesService.places; //getter property
+
+		//for the virtual scroll
+		this.listedLoadedPlaces = this.loadedPlaces.slice(1);
+	  }
+	
+	
+
+

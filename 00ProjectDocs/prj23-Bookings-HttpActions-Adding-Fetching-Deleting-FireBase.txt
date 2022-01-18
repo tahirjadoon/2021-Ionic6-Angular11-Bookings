@@ -1,0 +1,68 @@
+Copy "prj22-Bookings-StateManagement" and rename it as "prj23-Bookings-"
+	run command "npm install"
+	
+run "ionic serve" to make sure that the app runs fine 
+
+Check 03SettingUpFireBase.txt [root] to see how Firebase got setup. 
+
+HttpClient will be used to connect to the firebase. 
+	Go to app.module.ts and make sure that to add "HttpClientModule" to the imports array
+	
+Next create a service for all http request 
+	> ionic generate service Utilities/Services/httpclient
+
+	this will hold our generic http verbs 
+	the firebase properties and values are coming from the firebase.model.ts. Check the constructor there.
+
+		At the top there is a property for the appStoreMode, It has three possible values so setup accordingly. 
+			Database,
+			DatabaseAndLocal,
+			Local
+		
+		This model has the properties to hold the Firebase params. 
+			Fill these from row 25 to 29
+			
+		End point names start from row 32
+			
+		When creating the instance of this class do specify the httpAction for which this is needed. finalUrl utilizes it.
+
+Enums 
+	two enums in a single file 
+		Utilities/Enums/zHttpAction.enum.ts 
+			* zHttpAction
+			* zDatabaseMode	
+			
+HttpClient Services
+	This service has the generic methods to perform put/post/delete 
+			
+Places.service.ts is now using the FireBase to store and fetch data
+
+offers.page.ts
+	ionViewWillEnter: using the new fetchPlaces method. 
+	Displaying a spinner while loading the data, local spinner. 
+
+discover.page.ts
+	ionViewWillEnter: using the new fetchPlaces method. 
+	Displaying a spinner while loading the data, local spinner.
+	
+Error handling for database calls
+	Check edit-offer.page.ts for details 
+	
+Bookings
+	bookings.service.ts: add bookings to firebase 
+	bookings.page.ts: get the bookings from the firebase using on ionViewWillEnter
+	bookings.page.html: display the spinner while fetching the data. 
+	
+	Bookings are search able by userId so firebase rule set needs to be updated
+	
+	{
+	  "rules": {
+		".read": true,
+		".write": true,
+		"bookings": {
+		  ".indexOn": ["userId"]
+		}
+	  }
+	}
+	
+	also delete the booking from firebase 

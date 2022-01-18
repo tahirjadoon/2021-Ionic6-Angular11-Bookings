@@ -1,0 +1,61 @@
+We started with an empty shell and added nothing in it. 
+
+Created the index.html with hand. 
+
+Go to https://ionicframework.com/
+	Click Developers
+	Click UI Components
+	Click Guide
+	Click Packages and CDN under Getting started 
+		Here we have different options to use ionics in our app 
+		
+Pick the CDN option 
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+	<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+	
+Where to find ionic components
+	The full list is here: https://ionicframework.com/docs/components
+	
+	
+Categories of IONIC Components 
+	Output
+		ion-image
+		ion-badge
+		ion-loading
+		ion-label
+		ion-title
+		ion-thumbnail
+		ion-toolbar
+		ion-alert
+		ion-toast
+		ion-modal and so on
+	Layout
+		ion-grid
+		ion-row
+		ion-col
+		ion-list 
+		ion-card 
+		ion-infinite-scroll
+		ion-tabs and so on
+	Input
+		ion-button
+		ion-input
+		ion-textarea
+		ion-menu
+		ion-select
+		ion-datetime
+		ion-fab
+		ion-toggle and so on 
+		
+Setup the html as laid out in the html file. Some helpful links 
+	CSS Utilities: https://ionicframework.com/docs/layout/css-utilities
+	Components: https://ionicframework.com/docs/components
+	
+Also created an app.js and included it towards the bottom of the page before the ending body tag. 
+	
+After that will write the events for the buttons. Check app.js for more details. 
+   
+   
+	
+	

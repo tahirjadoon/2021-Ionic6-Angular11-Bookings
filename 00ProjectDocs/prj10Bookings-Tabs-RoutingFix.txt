@@ -1,0 +1,134 @@
+Copy prj09Bookings-Structure and rename it as prj09Bookings-Tabs
+	run command "npm install"
+	
+run "ionic serve" to make sure that the app runs fine 
+
+Add the tabs to the boottom of the Places page. 
+	https://ionicframework.com/docs/api/tabs
+	
+IMPORTANT: each ion-tab-button will get a tab attribute. This should be the same as in the routing, path attribute. 
+	For details check #4 in "10Prj09Bookings-Structure"
+	
+	
+On the places.page.html only left the tabs 
+	<ion-tabs>
+	  <ion-tab-bar slot="bottom">
+
+		<ion-tab-button tab="discover">
+		  <ion-label>Discover</ion-label>
+		  <ion-icon name="search"></ion-icon>
+		</ion-tab-button>
+
+		<ion-tab-button tab="offers">
+		  <ion-label>Offers</ion-label>
+		  <ion-icon name="card"></ion-icon>
+		</ion-tab-button>
+
+	  </ion-tab-bar>
+	</ion-tabs>
+	
+When clicking on the tabs, due to the routes it will go to the correct page. 
+
+Have updated some of the routes to pass in the dynamic information. 
+
+Updated routes, compare with "10Prj09Bookings-Structure.txt" to see the details 
+
+Routes informatin
+	* http://localhost:8100/ should go to /places/tabs/discover 
+	* places page never display
+	* the tabs placed on "places" page should display at the bottom of all the children
+
+	1. in the "app-routing-module.ts" file 
+		The default route will be "places" 
+	
+		const routes: Routes = [
+		  { path: '', redirectTo: 'places', pathMatch: 'full' },
+		  {
+			path: 'auth',
+			loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+		  },
+		  {
+			path: 'places',
+			loadChildren: () => import('./places/places.module').then( m => m.PlacesPageModule)
+		  },
+		  {
+			path: 'bookings',
+			loadChildren: () => import('./bookings/bookings.module').then( m => m.BookingsPageModule)
+		  },
+		];
+	
+	2. Bookins top level "bookings-routing.module.ts" 
+		const routes: Routes = [
+		  {
+			path: '',
+			component: BookingsPage
+		  }
+		];
+		
+	3. Auth top level "auth-routing.module.ts"
+		const routes: Routes = [
+		  {
+			path: '',
+			component: AuthPage
+		  }
+		];
+		
+	4. Places top level "places-routing.module.ts". Places has discover and offers 
+		const routes: Routes = [
+		  {
+			path: 'tabs',
+			component: PlacesPage,
+			children: [
+			  {
+				path: 'discover',
+				loadChildren: () => import('./discover/discover.module').then( m => m.DiscoverPageModule)
+			  },
+			  {
+				path: 'offers',
+				loadChildren: () => import('./offers/offers.module').then( m => m.OffersPageModule)
+			  },
+			  {
+				path: '',
+				redirectTo: '/places/tabs/discover',
+				pathMatch: 'full'
+			  }
+			]
+		  },
+		  {
+			path: '',
+			redirectTo: '/places/tabs/discover',
+			pathMatch: 'full'
+		  }
+		];
+
+	4.1. Discover has place-detail, "discover-routing.module.ts" will look like 
+		const routes: Routes = [
+		  {
+			path: '',
+			component: DiscoverPage
+		  },
+		  {
+			path: 'place/:placeId/detail', //the route will be //places/tabs/discover/place/12345/detail
+			loadChildren: () => import('./place-detail/place-detail.module').then( m => m.PlaceDetailPageModule)
+		  }
+		];
+		
+	5. Offers has 3 children, "offers-routing.module.ts" will look like 
+		const routes: Routes = [
+		  {
+			path: '',
+			component: OffersPage
+		  },
+		  {
+			path: 'new',
+			loadChildren: () => import('./new-offer/new-offer.module').then( m => m.NewOfferPageModule)
+		  },
+		  {
+			path: 'edit/:placeId/offer', //the route will be /places/tabs/offers/edit/12345/offer
+			loadChildren: () => import('./edit-offer/edit-offer.module').then( m => m.EditOfferPageModule)
+		  },
+		  {
+			path: 'offer/:placeId/bookings', //the route will be /places/tabs/offers/offer/12345/bookings
+			loadChildren: () => import('./offer-bookings/offer-bookings.module').then( m => m.OfferBookingsPageModule)
+		  }
+		];

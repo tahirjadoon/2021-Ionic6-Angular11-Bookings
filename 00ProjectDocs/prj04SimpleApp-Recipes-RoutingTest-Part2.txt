@@ -1,0 +1,66 @@
+Copy prj03SimpleApp-Recipes-RoutingTest and rename as prj04SimpleApp-Recipes-RoutingTest-Part2
+	run "npm install" on it. 
+	
+run the app to make sure that it is good
+	>ionic serve
+	
+create a new page under recipes 
+	> ionic generate page recipes/recipe-detail
+	
+Default routing behavior
+	recipes-routing.module.ts got the entry for the recipe-detail ruting module. Change it to 
+	{
+		path: ':recipeId',
+		loadChildren: () => import('./recipe-detail/recipe-detail.module').then( m => m.RecipeDetailPageModule)
+	}
+	this will take to the page when navigating to "http://localhost:8100/recipes/r1" 
+	
+	Alternatively, we can setup the routes as following as well. 
+		Comment the recipe-detail route in the recipes-routing.module.ts
+			const routes: Routes = [
+			  {
+				path: '',
+				component: RecipesPage
+			  },/*
+			  {
+				path: ':recipeId',
+				loadChildren: () => import('./recipe-detail/recipe-detail.module').then( m => m.RecipeDetailPageModule)
+			  },
+			*/
+			];
+		Go to app routing moduel and setup the recipes route as following 
+			const routes: Routes = [
+			  {
+				path: '',
+				redirectTo: 'recipes',
+				pathMatch: 'full'
+			  },/*
+			  {
+				path: 'recipes',
+				loadChildren: () => import('./recipes/recipes.module').then( m => m.RecipesPageModule)
+			  },*/
+			  {
+				path: 'recipes',
+				children: [
+				  {
+					path: '',
+					loadChildren: () => import('./recipes/recipes.module').then( m => m.RecipesPageModule)
+				  },
+				  {
+					path: ':recipeId',
+					loadChildren: () => import('./recipes/recipe-detail/recipe-detail.module').then( m => m.RecipeDetailPageModule)
+				  }
+				]
+			  },
+			];
+			
+		issue command ionic serve again and /recipes or /recipes/r1 should display now. 
+		
+		
+
+			
+		
+	
+		
+	
+	
