@@ -1,7 +1,0 @@
-{
-  "name": "prj03SimpleApp-Recipes-RoutingTest",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

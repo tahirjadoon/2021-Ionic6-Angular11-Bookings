@@ -1,7 +1,0 @@
-{
-  "name": "prj09Bookings-Structure",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
